@@ -39,10 +39,6 @@ NSString *const AudioRecorderEventFinished = @"recordingFinished";
 
 RCT_EXPORT_MODULE();
 
-+ (BOOL)requiresMainQueueSetup {
-  return YES;
-}
-
 - (void)sendProgressUpdate {
   if (_audioRecorder && _audioRecorder.isRecording) {
     _currentTime = _audioRecorder.currentTime;
@@ -66,6 +62,10 @@ RCT_EXPORT_MODULE();
 
     _prevProgressUpdateTime = [NSDate date];
   }
+}
+
++ (BOOL)requiresMainQueueSetup {
+  return YES;
 }
 
 - (void)stopProgressTimer {
